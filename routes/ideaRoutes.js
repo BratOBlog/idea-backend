@@ -53,7 +53,7 @@ router.post("/", async (req, res, next) => {
     try {
         const { title, summary, description, tags } = req.body;
 
-        if (!title?.trim() || !summary?.trim() || !description.trim()) {
+        if (!title?.trim() || !summary?.trim() || !description?.trim()) {
             res.status(400);
             throw new Error("Title, summary, and description are required")
         }
