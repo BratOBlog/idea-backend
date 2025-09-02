@@ -7,9 +7,18 @@ import mongoose from "mongoose";
 //@route              GET /api/ideas
 //@description        This will GET all ideas
 //@access             Public
+//@query              _limit (optional limit for idead returned)
 router.get("/", async (req, res, next) => {
     try {
-        const ideas = await Idea.find();
+        const limit = parseInt(req.query._limit);
+        const query = Idea.find().sort({ createdAt: -1 })
+
+
+        if (!isNaN(limit)) {
+            query.limit(limit)
+        }
+
+        const ideas = await query.exec();
         res.json(ideas);
 
     } catch (err) {
