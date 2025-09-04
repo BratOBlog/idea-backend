@@ -47,9 +47,11 @@ router.post('/register', async (req, res, next) => {
 
         res.status(201).json({
             accessToken,
-            id: user._id,
-            name: user.name,
-            email: user.email
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+            }
         })
     } catch (err) {
         console.log(err)
@@ -105,9 +107,11 @@ router.post("/login", async (req, res, next) => {
 
         res.status(201).json({
             accessToken,
-            id: user._id,
-            name: user.name,
-            email: user.email
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+            }
         })
     } catch (err) {
         console.log(err)
