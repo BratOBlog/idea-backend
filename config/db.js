@@ -6,7 +6,7 @@ const connectDb = async () => {
         const connect = await mongoose.connect(process.env.MONGO_URI)
     }
     catch (err) {
-        console.err(`Error: ${err.messsage}`)
+        console.error(`Error: ${err.messsage}`)
         process.exit(1)
     }
 }
