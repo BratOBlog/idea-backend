@@ -17,9 +17,9 @@ const PORT = process.env.PORT || 8000;
 //Connect to MongoDB
 connectDb();
 
-//Middleware
+//CORS CONFIG
 const allowedOrigins = [
-    'http://localhost:3000',
+    'http://localhost:3000', 'https://idea-mauve.vercel.app/'
 ]
 
 app.use(cors({
