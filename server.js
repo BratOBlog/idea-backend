@@ -19,7 +19,7 @@ connectDb();
 
 //CORS CONFIG
 const allowedOrigins = [
-    'http://localhost:3000', 'https://idea-mauve.vercel.app/',
+    'http://localhost:3000', 'https://idea-mauve.vercel.app',
 ]
 
 app.use(cors({
