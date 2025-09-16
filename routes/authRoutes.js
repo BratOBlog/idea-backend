@@ -3,6 +3,11 @@ import User from '../models/User.js';
 import { jwtVerify } from 'jose';
 import { JWT_SECRET } from '../utils/getJwtSecret.js';
 import { generateToken } from '../utils/generateToken.js';
+import {
+    forgotPassword,
+    resetPassword
+} from "../controllers/forgotPassword.controller.js";
+
 
 const router = express.Router();
 
@@ -162,5 +167,21 @@ router.post('/refresh', async (req, res, next) => {
         next(err);
     }
 });
+
+// @route         POST api/auth/forgot-password
+// @description   Send a password reset link to the email address of given user
+// @access        Public
+
+/* THis is a different approach to have the logic in a separate file and import it to the authRoutes.*/
+
+router.post("/forgotPassword", forgotPassword);
+
+
+// @route         POST api/auth/reset-password
+// @description   Resets the password of the user
+// @access        Public
+
+router.post("/reset-password/:token", resetPassword);
+
 
 export default router;
