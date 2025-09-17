@@ -174,7 +174,7 @@ router.post('/refresh', async (req, res, next) => {
 
 /* THis is a different approach to have the logic in a separate file and import it to the authRoutes.*/
 
-router.post("/forgotPassword", forgotPassword);
+router.post("/forgot-password", forgotPassword);
 
 
 // @route         POST api/auth/reset-password
