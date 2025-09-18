@@ -6,7 +6,7 @@ import { generateToken } from '../utils/generateToken.js';
 import {
     forgotPassword,
     resetPassword
-} from "../controllers/forgotPassword.controller.js";
+} from "../controllers/forgotpassword.controller.js";
 
 
 const router = express.Router();

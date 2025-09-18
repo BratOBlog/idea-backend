@@ -49,13 +49,14 @@ export const forgotPassword = async (req, res) => {
 export const resetPassword = async (req, res) => {
     try {
         const { token } = req.params;
-        const { newPassword } = req.body;
+        const { password } = req.body;
 
         // verify token
         const { payload } = await jwtVerify(
             token,
-            new TextEncoder().encode(process.env.JWT_SECRET_KEY)
+            new TextEncoder().encode(process.env.JWT_SECRET)
         );
+
 
         // find user
         const user = await User.findById(payload.userId);
@@ -64,7 +65,7 @@ export const resetPassword = async (req, res) => {
         }
 
         // assign new password (will be hashed by pre-save hook)
-        user.password = newPassword;
+        user.password = password;
         await user.save();
 
         res.status(200).json({ message: "Password updated successfully" });
