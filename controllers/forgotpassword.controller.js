@@ -26,16 +26,19 @@ export const forgotPassword = async (req, res) => {
 
         // email with reset link
         const resetLink = `https://idea-mauve.vercel.app/reset-password/${passwordToken}`;
+        const userName = user.name
+
         const mailOptions = {
             from: process.env.EMAIL,
             to: req.body.email,
-            subject: "Reset Password",
+            subject: "Password reset from Idea Drop page",
             html: `
-        <h1>Reset Your Password</h1>
-        <p>Click on the following link to reset your password:</p>
+        <h1>Hi ${userName}!</h1>
+        <p>To reset your password click on the following link:</p>
         <a href="${resetLink}">${resetLink}</a>
         <p>The link will expire in 10 minutes.</p>
         <p>If you didn't request a password reset, please ignore this email.</p>
+             <p>Best regards,<br/> The Idea Team</p>
       `,
         };
 
